@@ -9,15 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Currency Converter")
-            
-            ConverterView()
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: [.mint, .white]), startPoint: .top, endPoint: .bottom)
+                    .edgesIgnoringSafeArea(.all)
+            VStack(spacing: 10) {   
+                Text("Currency Converter")
+                    .font(.largeTitle)
+                    .foregroundStyle(Color.black)
+                    .bold(true)
+                ConverterView()
+                        .shadow(radius: 10)
+                        .padding(.horizontal)
+            }
         }
-        .padding()
     }
 }
 
