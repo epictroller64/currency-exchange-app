@@ -17,6 +17,8 @@ struct ConverterView: View {
         VStack(spacing: 20) {
             CurrencyFrom()
                 .environmentObject(currencyModel)
+            CurrencySwapButton()
+                .environmentObject(currencyModel)
             CurrencyTo()
                 .environmentObject(currencyModel)
             ConversionButton(currencyModel: currencyModel, isPressed: $isPressed )
@@ -28,6 +30,22 @@ struct ConverterView: View {
                 .fill(Color.mint)
                 .padding(10)
         }
+    }
+}
+
+struct CurrencySwapButton: View {
+    @EnvironmentObject var currencyModel: CurrencyModel
+    var body: some View {
+        Button(action: {
+            let toCurrency = currencyModel.toCurrency
+            let fromCurrency = currencyModel.fromCurrency
+            currencyModel.toCurrency = fromCurrency
+            currencyModel.fromCurrency = toCurrency
+        }) {
+            Image(systemName: "arrow.up.arrow.down")
+        }
+        .foregroundStyle(.white)
+        .bold(true)
     }
 }
 
