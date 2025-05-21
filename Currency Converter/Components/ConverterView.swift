@@ -124,7 +124,7 @@ struct CurrencyFrom: View {
                         .padding(.leading, 10)
                 }
                 .sheet(isPresented: $showCurrencyPicker) {
-                    CurrencySelectionView(selectedCurrency: $currencyModel.fromCurrency, showCurrencySelection: $showCurrencyPicker)
+                    CurrencySelectionView(selectedCurrency: $currencyModel.fromCurrency, showCurrencySelection: $showCurrencyPicker, oppositeCurrency: $currencyModel.toCurrency)
                 }
                 Text("\(currencyModel.fromCurrency)")
                     .font(.system(size: 20))
@@ -173,7 +173,7 @@ struct CurrencyTo: View {
                         .padding(.leading, 10)
                 }
                 .sheet(isPresented: $showCurrencyPicker) {
-                    CurrencySelectionView(selectedCurrency: $currencyModel.toCurrency, showCurrencySelection: $showCurrencyPicker)
+                    CurrencySelectionView(selectedCurrency: $currencyModel.toCurrency, showCurrencySelection: $showCurrencyPicker, oppositeCurrency: $currencyModel.fromCurrency)
                 }
                 Text("\(currencyModel.toCurrency)")
                     .font(.system(size: 20))
